@@ -1,8 +1,13 @@
 import React from 'react';
+import { observer } from 'mobx-react';
+
+import useStores from './useStores';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const { timerStore } = useStores();
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,8 +24,14 @@ function App() {
           Learn React
         </a>
       </header>
+      <div>
+        <button
+          type="button"
+          onClick={timerStore.resetTimer}
+        >{`Seconds passed: ${timerStore.timer}`}</button>
+      </div>
     </div>
   );
 }
 
-export default App;
+export default observer(App);
