@@ -1,25 +1,19 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import { Router } from '@reach/router';
 
-import useStores from './useStores';
-import logo from './logo.svg';
+import PageA from './components/PageA';
+import PageB from './components/PageB';
+
 import './App.css';
 
 function App() {
-  const { timerStore } = useStores();
-
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button
-          type="button"
-          onClick={timerStore.resetTimer}
-        >{`Seconds passed: ${timerStore.timer}`}</button>
-      </header>
+      <Router>
+        <PageA path="/a" default />
+        <PageB path="/b" />
+      </Router>
     </div>
   );
 }
