@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Link } from '@reach/router';
+import { Button } from '@material-ui/core';
 
 import useStores from '../useStores';
 import logo from '../logo.svg';
@@ -18,8 +19,12 @@ function PageA() {
           type="button"
           onClick={timerStore.resetTimer}
         >{`Seconds passed: ${timerStore.timer}`}</button>
-        <Link to="/a">Page A</Link>
-        <Link to="/b">Page B</Link>
+        <Button variant="contained" color="primary" component={Link} to="/a">
+          Page A
+        </Button>
+        <Button variant="contained" color="secondary" component={Link} to="/b">
+          Page B
+        </Button>
       </header>
     </div>
   );
